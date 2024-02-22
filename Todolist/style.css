@@ -1,0 +1,73 @@
+body{
+    font-family: "Anta", "sans-serif";
+}
+
+h1{
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.frm-task {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: .2rem;
+}
+
+.frm-task>input[type="text"] {
+    flex: 1;
+    border: 3px solid black;
+    padding: .5rem;
+    border-radius: .3rem;
+}
+.frm-task>button {
+    padding: 0 .5rem;
+}
+
+.todos{
+    box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+    padding: 1rem;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+.todo {
+    display: flex;
+    gap: .2rem;
+    align-items: center;
+    padding: .5rem;
+}
+
+.todo:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.todo>input {
+    width: 1rem;
+    height: 1rem;
+}
+
+.todo>span{
+    margin-right: auto;
+}
+
+.todo>button {
+    font-family: "Anta", sans-serif;
+    font-weight: 900;
+    border: 3px solid #333;
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.todo>button:hover{
+    background-color: #333;
+    color: white;
+}
+
+.todo>button:active {
+    background-color: #555;
+    color: white;
+}

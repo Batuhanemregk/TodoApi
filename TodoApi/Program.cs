@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<TodoContext>(builder => builder.UseInMemoryDatabase("TodoList"));
 builder.Services.AddControllers();
+builder.Services.AddCors(s => s.AddDefaultPolicy(
+    p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,6 +30,8 @@ app.UseDefaultFiles();
 
 //STATÝK dosylarýn dýþarýya açýlýr(wwwroot)
 app.UseStaticFiles();
+
+app.UseCors();
 
 app.UseAuthorization();
 
