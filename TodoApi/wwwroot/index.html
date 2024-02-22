@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">5 Günlük Hava Durumu</h1>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Sıcaklık</th>
+                    <th scope="col">Durum</th>
+                </tr>
+            </thead>
+            <tbody id="sonuc">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        fetch("/api/HavaDurumu")
+            .then(res => res.json())
+            .then(data => {
+                for (const gun of data) {
+                    document.getElementById("sonuc").innerHTML += 
+                        `<tr>
+                            <td>${tarihiBicimlendir(gun.tarih)}</td>
+                            <td>${gun.sicaklik}</td>
+                            <td>${gun.aciklama}</td>
+                        </tr`
+                }
+
+            })   
+
+        function tarihiBicimlendir(tarih) {
+            const yil = tarih.substr(0, 4);
+            const ay = tarih.substr(5, 2)
+            const gun = tarih.substr(8, 2)
+            return gun + "." + ay + "." + yil          
+        }
+
+        function tarihBicimlendir2(tarih) {
+            var date = new Date(tarih);       //başka ülkede patlar
+            return date.toLocaleDateString();
+        }
+
+    </script>
+</body>
+</html>
